@@ -54,8 +54,10 @@ int dfs(int x, int y) {
                 v = y + 2 * add[j];
                 if (valid(u, v, '#') || (u == startx && v == starty)) {
                     used[x + add[i]][y + add[j]] = true;
+                    // before we enter the new STATE of game we denote that we have passed this cell
                     res = max(res, dfs(u, v));
                     used[x + add[i]][y + add[j]] = false;
+                    // after DFS the cell was not entered because we have returned from it
                 }
             }
         }
